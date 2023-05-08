@@ -22,6 +22,7 @@ BOTTOM_PIPE_IMG = pygame.image.load('Game Images/Super Mario pipe.png')
 TOP_PIPE_IMG = pygame.transform.flip(BOTTOM_PIPE_IMG, False, True) #flip the image of the bottom pipe to get the image for the pipe on the top
 FLOOR_IMG = pygame.image.load('Game Images/Stone Floor.png')
 BG_IMG = pygame.transform.scale(pygame.image.load('Game Images/City Skyline.png'), (SCREEN_WIDTH, SCREEN_HEIGHT))
+WARNING_IMG = pygame.transform.scale(pygame.image.load('Game Images/upArrow.png'),(40,40))
 
 #set the game options
 FPS = 30 #run the game at rate FPS, the speed at which images are shown

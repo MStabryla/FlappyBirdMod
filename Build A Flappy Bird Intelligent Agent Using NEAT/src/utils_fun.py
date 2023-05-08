@@ -32,7 +32,7 @@ def collide(bird, pipe, floor, screen):
 
 
 #define a function to draw the screen to display the game
-def draw_game(screen, birds, pipes, floor, score, generation, game_time):
+def draw_game(screen, birds, pipes, floor, score, generation, game_time, warning):
     
     #draw the background
     screen.blit(BG_IMG, (0, 0))
@@ -51,6 +51,9 @@ def draw_game(screen, birds, pipes, floor, score, generation, game_time):
     for bird in birds:
         rotated_image, rotated_rect = bird.animation()
         screen.blit(rotated_image, rotated_rect)
+        # czy pokazać strzałkę
+        if bird.should_jump:
+            screen.blit(warning, (rotated_rect.x, rotated_rect.y - 40))
     
     #add additional information
     score_text = FONT.render('Score: ' + str(score), 1, FONT_COLOR) #set up the text to show the scores

@@ -40,12 +40,12 @@ def main(genomes, config):
     while run is True: #when we run the program
         
         #check the event of the game and quit if we close the window
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-                pygame.quit()
-                quit()
-                break
+        # for event in pygame.event.get():
+        #     if event.type == pygame.QUIT:
+        #         run = False
+        #         pygame.quit()
+        #         quit()
+        #         break
         
         #stop the game when the score exceed the maximum score
         #break the loop and restart when no bird left
@@ -77,9 +77,22 @@ def main(genomes, config):
             net_input = (delta_x, delta_y_top, delta_y_bottom)
             #input the bird's distance from the pipes to get the output of whether to jump or not
             output = models_list[index].activate(net_input)
-            
-            if output[0] > prob_threshold_to_jump: #if the model output is greater than the probability threshold to jump
-                bird.jump() #then jump the bird
+
+            bird.should_jump = output[0] > prob_threshold_to_jump
+
+            # if output[0] > prob_threshold_to_jump: #if the model output is greater than the probability threshold to jump
+            #     bird.jump() #then jump the bird
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_UP :
+                    # print(event)
+                    bird.jump()
+                    break
+                elif event.type == pygame.QUIT:
+                    run = False
+                    pygame.quit()
+                    quit()
+                    break
             
             bird_failed = True if collide(bird, pipes_list[pipe_input_index], floor, screen) is True else False
             
@@ -91,4 +104,4 @@ def main(genomes, config):
                 genomes_list.pop(index) #drop the genome from the list if collided
                 birds_list.pop(index) #drop the bird from the list if collided
 
-        draw_game(screen, birds_list, pipes_list, floor, score, generation, game_time) #draw the screen of the game
+        draw_game(screen, birds_list, pipes_list, floor, score, generation, game_time, WARNING_IMG) #draw the screen of the game

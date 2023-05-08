@@ -23,6 +23,7 @@ class Bird:
         self.time = 0 #starting time set to calculate displacement, initialized to be 0
         self.velocity = 0 #starting vertical velocity, initialized to be 0
         self.animation_time_count = 0 #used to change bird images, initialized to be 0
+        self.should_jump = False
         
     #defien a function to move the bird
     def move(self):
