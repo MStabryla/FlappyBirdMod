@@ -31,7 +31,7 @@ class Bird:
         
         #for a body with a nonzero speed v and a constant acceleration a
         #the displacement d of this body after time t is d = vt + 1/2at^2
-        displacement = self.velocity * self.time + (1/2) * bird_acceleration * self.time ** 2 #calculate the displacement when going downward
+        displacement = 1.3 * self.velocity * self.time + (1/2) * bird_acceleration * self.time ** 2 #calculate the displacement when going downward
         
         #we don't want the bird going donw too fast
         #so we need to set a displacement limit per frame

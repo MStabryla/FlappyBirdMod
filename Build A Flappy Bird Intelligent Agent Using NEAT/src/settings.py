@@ -25,7 +25,7 @@ BG_IMG = pygame.transform.scale(pygame.image.load('Game Images/City Skyline.png'
 WARNING_IMG = pygame.transform.scale(pygame.image.load('Game Images/upArrow.png'),(40,40))
 
 #set the game options
-FPS = 30 #run the game at rate FPS, the speed at which images are shown
+FPS = 15 #run the game at rate FPS, the speed at which images are shown
 max_score = 100 #the maximum score of the game before we break the loop
 
 # -------------------------------- #

@@ -35,8 +35,25 @@ def main(genomes, config):
         model = neat.nn.FeedForwardNetwork.create(genome, config) #set up the neural network for each genome using the configuration we set
         models_list.append(model) #append the neural network in the list
         
-    run = True
+    run = False
     
+
+    while not run:  #press UP key to start the game
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
+                run = True
+            if event.type == pygame.QUIT:
+                run = False
+                pygame.quit()
+                quit()
+                break
+        instructions_text = FONT.render("Press UP ARROW to start", True, (255, 255, 255))
+        text_rect = instructions_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+
+        # SCREEN.fill((0, 0, 0))
+        SCREEN.blit(instructions_text, text_rect)
+        pygame.display.flip()
+
     while run is True: #when we run the program
         
         #check the event of the game and quit if we close the window
@@ -69,6 +86,8 @@ def main(genomes, config):
                        
         score = len(passed_pipes) #calculate the score of the game, which equals to the number of pipes the bird passed
         
+
+
         for index, bird in enumerate(birds_list):
             bird.move() #move the bird
             delta_x = bird.x - pipes_list[pipe_input_index].x #input 1: the horizontal distance between the bird and the pipe
