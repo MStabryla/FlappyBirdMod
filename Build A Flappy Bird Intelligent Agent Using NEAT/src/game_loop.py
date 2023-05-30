@@ -93,7 +93,7 @@ def main(genomes, config):
             delta_x = bird.x - pipes_list[pipe_input_index].x #input 1: the horizontal distance between the bird and the pipe
             delta_y_top = bird.y - pipes_list[pipe_input_index].top_pipe_height #input 2: the vertical distance between the bird and the top pipe
             delta_y_bottom = bird.y - pipes_list[pipe_input_index].bottom_pipe_topleft #input 3: the vertical distance between the bird and the bottom pipe
-            net_input = (delta_x, delta_y_top, delta_y_bottom)
+            net_input = (delta_x + OFFSET, delta_y_top, delta_y_bottom)
             #input the bird's distance from the pipes to get the output of whether to jump or not
             output = models_list[index].activate(net_input)
 
